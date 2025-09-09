@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Mijn Website</title>
   <style>
+    /* Algemene reset en basisstijl */
     body, html {
       margin: 0;
       padding: 0;
@@ -12,16 +13,29 @@
       font-family: Arial, sans-serif;
     }
 
+    /* Achtergrond video */
     .background-video {
       position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      z-index: -2;
+    }
+
+    /* Donkere overlay over de video (maakt tekst leesbaarder) */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
 
+    /* Inhoud die bovenop komt */
     .content {
       position: relative;
       z-index: 1;
@@ -42,20 +56,24 @@
 
     p {
       font-size: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     iframe {
-      margin-top: 2rem;
       border-radius: 12px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
   <!-- Achtergrond video -->
-  <video autoplay muted loop class="background-video">
+  <video autoplay muted loop playsinline class="background-video">
     <source src="3752531-hd_1920_1080_24fps.mp4" type="video/mp4">
     Je browser ondersteunt geen HTML5 video.
   </video>
+
+  <!-- Donkere overlay -->
+  <div class="overlay"></div>
 
   <!-- Je inhoud -->
   <div class="content">
@@ -63,10 +81,9 @@
     <p>Hier komt je profiel of info 🎉</p>
 
     <!-- Spotify embed -->
-    <iframe style="border-radius:12px" 
-      src="https://open.spotify.com/embed/track/0kyRg63eT9pZsb9G2Gp73d?utm_source=generator" 
-      width="300" height="80" frameBorder="0" 
-      allowfullscreen="" 
+    <iframe 
+      src="https://open.spotify.com/embed/track/0kyRg63eT9pZsb9G2Gp73d?utm_source=generator"
+      width="300" height="80" frameborder="0"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
     </iframe>
   </div>
